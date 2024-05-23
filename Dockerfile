@@ -22,7 +22,6 @@ FROM alpine:3.17.0
 ARG TARGETOS
 ARG TARGETARCH
 WORKDIR /app
-ADD data data
 COPY --from=builder /build/profanity-filter-grpc-plugin-server-go_$TARGETOS-$TARGETARCH profanity-filter-grpc-plugin-server-go
 # Plugin arch gRPC server port
 EXPOSE 6565
