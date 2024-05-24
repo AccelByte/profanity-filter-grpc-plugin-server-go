@@ -70,14 +70,14 @@ custom functions for validating profanity payloads.
       ...
       ```
 
-   d. Go v1.19
+   d. Go v1.21
 
     - Follow [Go installation](https://go.dev/doc/install) instruction to install Go
 
       ```
       go version
 
-      go version go1.19.0 linux/amd64
+      go version go1.21.0 linux/amd64
       ```
 
    e. Curl
