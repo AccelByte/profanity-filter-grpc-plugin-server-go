@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package accelbyte.profanityfilter.registered.v1;
-// Version 1.0.0
+// Version v1.0.0
 
 option go_package = "accelbyte.net/profanityfilter/registered_v1";
 option java_multiple_files = true;
