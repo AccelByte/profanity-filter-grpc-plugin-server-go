@@ -1,8 +1,23 @@
+// Copyright (c) 2024 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
 package main
 
 import (
 	"context"
 	"fmt"
+	"log"
+	"net"
+	"net/http"
+	"os"
+	"os/signal"
+	"profanity-filter-grpc-plugin-server-go/pkg/common"
+	registered_v1 "profanity-filter-grpc-plugin-server-go/pkg/pb"
+	"profanity-filter-grpc-plugin-server-go/pkg/server"
+	"runtime"
+	"strings"
+
 	"github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory"
 	"github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/iam"
 	sdkAuth "github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/utils/auth"
@@ -21,16 +36,6 @@ import (
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
-	"log"
-	"net"
-	"net/http"
-	"os"
-	"os/signal"
-	"profanity-filter-grpc-plugin-server-go/pkg/common"
-	registered_v1 "profanity-filter-grpc-plugin-server-go/pkg/pb"
-	"profanity-filter-grpc-plugin-server-go/pkg/server"
-	"runtime"
-	"strings"
 )
 
 const (

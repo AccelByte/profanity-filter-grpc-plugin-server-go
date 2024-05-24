@@ -3,7 +3,7 @@ SHELL := /bin/bash
 IMAGE_NAME := $(shell basename "$$(pwd)")-app
 BUILDER := extend-builder
 
-GOLANG_DOCKER_IMAGE := golang:1.19
+GOLANG_DOCKER_IMAGE := golang:1.21
 
 TEST_SAMPLE_CONTAINER_NAME := sample-override-test
 
@@ -25,7 +25,7 @@ lint:
 				-w /data/ \
 				-e GOCACHE=/data/.cache/go-build \
 				-e GOLANGCI_LINT_CACHE=/data/.cache/go-lint \
-				golangci/golangci-lint:v1.42.1\
+				golangci/golangci-lint:v1.46.2\
 				sh -c "cd $$DIRECTORY \
 						&& golangci-lint \
 								-v \

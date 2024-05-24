@@ -1,3 +1,7 @@
+// Copyright (c) 2024 AccelByte Inc. All Rights Reserved.
+// This is licensed software from AccelByte Inc, for limitations
+// and restrictions contact your company contract manager.
+
 package server
 
 import (
@@ -25,6 +29,7 @@ func NewProfanityFilterServer() *ProfanityFilterServer {
 	default:
 		server.profanityFilterProvider = provider.NewDefaultProvider()
 	}
+
 	return &server
 }
 
@@ -34,6 +39,7 @@ func (server *ProfanityFilterServer) Validate(ctx context.Context, request *regi
 	if err != nil {
 		return nil, err
 	}
+
 	return &registered_v1.ExtendProfanityValidationResponse{
 		IsProfane: profanityResp.IsProfane,
 		Message:   profanityResp.Message,
