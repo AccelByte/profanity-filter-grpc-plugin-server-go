@@ -6,7 +6,7 @@ set -e
 set -o pipefail
 #set -x
 
-APP_NAME=int-test-cl
+APP_NAME=int-test-pf
 
 get_code_verifier()
 {
@@ -134,15 +134,6 @@ if ! [ "$STATUS" = "R" ]; then
     exit 1
 fi
 
-APP_URL=$(api_curl "${AB_BASE_URL}/csm/v1/admin/namespaces/$AB_NAMESPACE/apps/$APP_NAME" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" \
-  -H 'content-type: application/json' | jq --raw-output .serviceURL )
-
-if [ "$APP_URL" == "null" ]; then
-  cat http_response.out
-  exit 1
-fi
-
 echo '# Testing Extend app using demo script'
 
-GRPC_SERVER_URL="$APP_URL" bash demo.sh
+EXTEND_APP_NAME="$APP_NAME" bash demo.sh
