@@ -42,7 +42,7 @@ const (
 	environment     = "production"
 	id              = int64(1)
 	metricsEndpoint = "/metrics"
-	metricsPort     = 8082
+	metricsPort     = 8080
 	grpcPort        = 6565
 )
 
