@@ -14,14 +14,21 @@ import (
 const DefaultProviderName = "default"
 
 type DefaultProvider struct {
+	detector *goaway.ProfanityDetector
 }
 
 func NewDefaultProvider() *DefaultProvider {
-	return &DefaultProvider{}
+	return &DefaultProvider{
+		detector: goaway.NewProfanityDetector().WithCustomDictionary(
+			[]string{"bad"},
+			[]string{"ibad"},
+			[]string{"yourbad"},
+		),
+	}
 }
 
 func (provider *DefaultProvider) Validate(ctx context.Context, req *ProfanityValidationRequest) (*ProfanityValidationResponse, error) {
-	isProfane := goaway.IsProfane(req.Value)
+	isProfane := provider.detector.IsProfane(req.Value)
 	message := utils.Ternary(isProfane, "this contains banned words", "")
 
 	return &ProfanityValidationResponse{
