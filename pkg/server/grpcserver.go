@@ -34,7 +34,7 @@ func NewProfanityFilterServer() *ProfanityFilterServer {
 }
 
 func (server *ProfanityFilterServer) Validate(ctx context.Context, request *registered_v1.ExtendProfanityValidationRequest) (*registered_v1.ExtendProfanityValidationResponse, error) {
-	profanityReq := provider.ProfanityValidationRequest{Value: request.Value}
+	profanityReq := provider.ProfanityValidationRequest{Value: request.Value, UserID: request.UserId}
 	profanityResp, err := server.profanityFilterProvider.Validate(ctx, &profanityReq)
 	if err != nil {
 		return nil, err

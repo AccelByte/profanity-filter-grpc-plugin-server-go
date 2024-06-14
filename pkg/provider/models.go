@@ -5,7 +5,8 @@
 package provider
 
 type ProfanityValidationRequest struct {
-	Value string `json:"value"`
+	Value  string `json:"value"`
+	UserID string `json:"userId,omitempty"`
 }
 
 type ProfanityValidationResponse struct {
