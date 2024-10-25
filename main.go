@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/factory"
+	"github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/repository"
 	"github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/service/iam"
 	sdkAuth "github.com/AccelByte/accelbyte-go-sdk/services-api/pkg/utils/auth"
 	promgrpc "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
@@ -91,13 +92,17 @@ func main() {
 		logging.StreamServerInterceptor(common.InterceptorLogger(logrusLogger), loggingOptions...),
 	}
 
+	// Preparing the IAM authorization
+	var tokenRepo repository.TokenRepository = sdkAuth.DefaultTokenRepositoryImpl()
+	var configRepo repository.ConfigRepository = sdkAuth.DefaultConfigRepositoryImpl()
+	var refreshRepo repository.RefreshTokenRepository = &sdkAuth.RefreshTokenImpl{AutoRefresh: true, RefreshRate: 0.01}
+
 	if strings.ToLower(common.GetEnv("PLUGIN_GRPC_SERVER_AUTH_ENABLED", "false")) == "true" {
-		configRepo := sdkAuth.DefaultConfigRepositoryImpl()
-		tokenRepo := sdkAuth.DefaultTokenRepositoryImpl()
 		common.OAuth = &iam.OAuth20Service{
-			Client:           factory.NewIamClient(configRepo),
-			ConfigRepository: configRepo,
-			TokenRepository:  tokenRepo,
+			Client:                 factory.NewIamClient(configRepo),
+			ConfigRepository:       configRepo,
+			TokenRepository:        tokenRepo,
+			RefreshTokenRepository: refreshRepo,
 		}
 
 		common.OAuth.SetLocalValidation(true)
