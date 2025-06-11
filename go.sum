@@ -31,8 +31,8 @@ cloud.google.com/go/storage v1.6.0/go.mod h1:N7U0C8pVQ/+NIKOBQyamJIeKQKkZ+mxpohl
 cloud.google.com/go/storage v1.8.0/go.mod h1:Wv1Oy7z6Yz3DshWRJFhqM/UCfaWIRTdp0RXyy7KQOVs=
 cloud.google.com/go/storage v1.10.0/go.mod h1:FLPqc6j+Ki4BU591ie1oL6qBQGu2Bl/tZ9ullr3+Kg0=
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
-github.com/AccelByte/accelbyte-go-sdk v0.78.1-0.20250319093635-48d06e1a5166 h1:OwT9QDRkYYUW5MDE1agAN5m9MufO2kxLTnCfeM8SkAI=
-github.com/AccelByte/accelbyte-go-sdk v0.78.1-0.20250319093635-48d06e1a5166/go.mod h1:f+faMGHemNXfz3GXcAsvE4V2VeVCE6CwiN/0eL2ZS4M=
+github.com/AccelByte/accelbyte-go-sdk v0.80.0 h1:/TaIJj0uWnB2FYpbrsGZbhOA8sCZW1YvcNUtD0F3DJY=
+github.com/AccelByte/accelbyte-go-sdk v0.80.0/go.mod h1:f+faMGHemNXfz3GXcAsvE4V2VeVCE6CwiN/0eL2ZS4M=
 github.com/AccelByte/bloom v0.0.0-20180915202807-98c052463922 h1:3v15CkYPdxShj9tisD+pU4YihvQCPUISwFrandjwq5A=
 github.com/AccelByte/bloom v0.0.0-20180915202807-98c052463922/go.mod h1:njjI8ZR5oAhtMq8ODchl6GBz8enKQJt+D9WqLn96hLI=
 github.com/AccelByte/go-jose v2.1.4+incompatible h1:jn3BJ0HZAUskWJ042CJGgFXDAwhTsEkOKCX0DIZ5OcQ=
